@@ -26,10 +26,13 @@ def scrape(q):
     
     # finding all links and storing the first one
     # we can download all images by iterating over the list
-    link = soup.find_all("div", {"class": "rg_meta notranslate"})[0]
+    # the links of each image are present inside a div with the class: rg_meta notranslate
+    a = soup.find_all("div", {"class": "rg_meta notranslate"})[0]
+    link = json.loads(a.text)["ou"]
     
     # downloads the photo
     save(link, "{}.jpg".format(q.replace('+', ' ')))
+    print('Image of {} downloaded.'.format(q.replace('+', ' ')))
 
 
 if __name__ == '__main__':
