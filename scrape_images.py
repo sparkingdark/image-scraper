@@ -7,7 +7,6 @@ from urllib.request import Request, urlopen, urlretrieve
 def save(url, filename):
     # This function inputs the image link and the name with which
     # the image needs to be saved, and thus downloads that image
-    resp = urlopen(Request(url, method='HEAD'))
     urlretrieve(url, filename)
 
 
